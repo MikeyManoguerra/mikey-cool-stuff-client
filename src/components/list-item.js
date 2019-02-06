@@ -5,10 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 export class ListItem extends React.Component {
-
-  expandThisItem(e) {
-    console.log(this.props)
-    this.props.dispatch(handleExpandedItem(e))
+  expandThisItem() {
+    this.props.dispatch(handleExpandedItem(this.props.id))
   }
 
   render() {
@@ -24,7 +22,7 @@ export class ListItem extends React.Component {
         <div className='button-container'>
           <button
             value={this.props.id}
-            onClick={(e) => this.expandThisItem(e.target.value)}>
+            onClick={(e) => this.expandThisItem(e.target )}>
             More</button>
         </div>
       </div>

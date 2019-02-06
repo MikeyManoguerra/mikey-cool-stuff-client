@@ -8,8 +8,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
     form: formReducer,
-    display: displayReducer,
-
+    display: displayReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

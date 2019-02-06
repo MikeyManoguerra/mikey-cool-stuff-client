@@ -7,10 +7,12 @@ export const fetchObjectsSuccess = objectsList => ({
 })
 
 export const HANDLE_EXPANDED_ITEM = 'HANDLE_EXPANDED_ITEM';
-export const handleExpandedItem = expandedItemId => ({
+export const handleExpandedItem = expandedItemId => {
+
+  return({
   type: HANDLE_EXPANDED_ITEM,
   expandedItemId
-})
+})}
 
 export const CONTRACT_ALL_ITEMS = 'CONTRACT_ALL_ITEMS';
 export const ContractAllItems = () => ({

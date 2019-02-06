@@ -14,9 +14,9 @@ class App extends Component {
     return (
       <div>
         <Redirect exact from='/' to='/App/List' />
-        <Route path='/App/' component={Header} />
-        <Route path='/menu/' exact component={Menu} />
-        <Route path='/App/List/' exact component={List} />
+          <Route path='/App/' component={Header} />
+          <Route path='/menu/' exact component={Menu} />
+          <Route path='/App/List/' exact component={List} />
       </div>
     );
   }

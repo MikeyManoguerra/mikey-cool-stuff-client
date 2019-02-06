@@ -13,20 +13,23 @@
   grid-column-end:  4;
   justify-self: stretch;
   align-self: stretch;
- background-color: antiquewhite;
+ background-color: red;
 }
 
 .expanded-name-location-container{
+  
+  grid-row-start: 2;
+  grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end:  3;
-  grid-row-start: 2;
-  grid-row-end: 3
+  
 }
 .expanded-description-container{
+  grid-row-start: 2;
+  grid-row-end: 3;
   grid-column-start: 3;
   grid-column-end:  4;
-  grid-row-start: 2;
-  grid-row-end: 3
+
 }
 
 h3{
@@ -34,10 +37,11 @@ h3{
 }
 
 .expanded-button-container {
-  grid-column-start: 4;
-  grid-column-end:  5;
+  
   grid-row-start: 2;
   grid-row-end: 3;
+  grid-column-start: 4;
+  grid-column-end:  5;
   align-self:end;
   padding: 10px;
 

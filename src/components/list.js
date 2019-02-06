@@ -1,19 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchObjects } from '../actions/display';
-import ListItem from './list-item';
+import{ ListItem } from './list-item';
+import ExpandedListItem from './expanded-list-item';
 
 class List extends React.Component {
   componentDidMount() {
 
     this.props.dispatch(fetchObjects());
-  }
+  }ß
 
   render() {
-    console.log(this.props.objects)
 
-    const objectList = this.props.objects.map((obj, index) => <li key={index}><ListItem {...obj} /></li>)
 
+    const objectList = this.props.objects.map((obj, index) => {
+      if (this.props.expandedListItem === obj.id){
+        return (
+        <li key={index}><ExpandedListItem {...obj}/></li>)
+      } else return (
+        <li key={index}><ListItem {...obj} /></li>)
+    })
 
     return (
       <div className='display'>
@@ -27,7 +33,8 @@ class List extends React.Component {
 
 const mapStatetoProps = state => {
   return ({
-    objects: state.display.objects
+    objects: state.display.objects,
+    expandedListItem: state.display.expandedListItem
   })
 }
 

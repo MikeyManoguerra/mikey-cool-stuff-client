@@ -1,0 +1,44 @@
+.expanded-list-item{
+  display:grid;
+  grid-template-columns: auto 40% 40% auto;
+  grid-template-rows:  300px 100px;
+  grid-gap: 10px;
+}
+
+.image-container{
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end:  4;
+  justify-self: stretch;
+  align-self: stretch;
+ background-color: antiquewhite;
+}
+
+.expanded-name-location-container{
+  grid-column-start: 1;
+  grid-column-end:  3;
+  grid-row-start: 2;
+  grid-row-end: 3
+}
+.expanded-description-container{
+  grid-column-start: 3;
+  grid-column-end:  4;
+  grid-row-start: 2;
+  grid-row-end: 3
+}
+
+h3{
+  margin-bottom: 10px;
+}
+
+.expanded-button-container {
+  grid-column-start: 4;
+  grid-column-end:  5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  align-self:end;
+  padding: 10px;
+
+}

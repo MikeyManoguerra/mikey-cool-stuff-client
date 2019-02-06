@@ -1,20 +1,34 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { fetchObjects } from '../actions/display';
+import ListItem from './list-item';
 
-export class List extends React.Component{
+class List extends React.Component {
+  componentDidMount() {
+
+    this.props.dispatch(fetchObjects());
+  }
+
+  render() {
+    console.log(this.props.objects)
+
+    const objectList = this.props.objects.map((obj, index) => <li key={index}><ListItem {...obj} /></li>)
 
 
-  render(){
-    return(
-      <div>
-        Test
+    return (
+      <div className='display'>
+        <ul className='object-list'>
+          {objectList}
+        </ul>
       </div>
     )
   }
 }
 
-const mapStatetoProps ={
-  
+const mapStatetoProps = state => {
+  return ({
+    objects: state.display.objects
+  })
 }
 
-export default connect(mapStatetoProps)(List)
+export default connect(mapStatetoProps)(List);

@@ -2,12 +2,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Header } from './header';
-import { List } from './list';
+import  List  from './list';
+import {connect} from 'react-redux';
 import {Route, Redirect, withRouter} from 'react-router-dom';
 import {Menu } from './menu';
 
 class App extends Component {
+
   render() {
+
     return (
       <div>
         <Redirect exact from='/' to='/App/List'/>
@@ -19,4 +22,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state =>({
+objects: state.display.objects
+})
+
+export default withRouter(connect(mapStateToProps)(App));

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Field, reduxForm, SubmissionError, focus } from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 import Input from './form-input';
 import { connect } from 'react-redux';
 import { getCategories, submitNewObject } from '../actions/display';
+import  ImageInput from './image-input';
 
 
 
@@ -13,13 +14,14 @@ export class NewObjectForm extends React.Component {
   }
 
   onSubmit(values) {
+    console.log(values);
     this.props.dispatch(submitNewObject(values))
   }
 
 
   render() {
     let catOptions = this.props.categoriesList.map((cat, index) => (
-      <option value={cat.id}>{cat.name}</option>
+      <option key={index} value={cat.id}>{cat.name}</option>
     ))
     let successMessage;
 
@@ -66,20 +68,26 @@ export class NewObjectForm extends React.Component {
             label="Country of origin, what does the label say?"
           />
           <Field
-            name='categories'
+            name='categoryIds'
             type='select '
             element='select'
+            multiple='multple'
             component={Input}
             label="select a category"
           >
             {catOptions}
           </Field>
           <Field
-            name='additional Categories'
+            name='categories'
             type='text'
             component={Input}
             label="add a category of your own!"
           />
+          <Field
+            name='image'
+            type='file'
+            component={ImageInput}
+            />
           <button type="submit">Submit</button>
         </form>
       </div>
@@ -97,6 +105,7 @@ NewObjectForm = connect(mapStateToProps)(NewObjectForm)
 
 export default reduxForm({
   form: 'newObject',
+  destroyOnUnmount: false,
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('newObject', Object.keys(errors)[0]))
 })(NewObjectForm);

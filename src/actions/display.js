@@ -61,7 +61,7 @@ export const submitNewObject = (values) => dispatch =>
   fetch(`${API_BASE_URL}/objects`, {
     method: 'POST',
     body: JSON.stringify(values),
-    headers: { 'Content-Type': 'application/json' }
+    headers: {'content-type': 'application/json'}
   }).then(res => {
     if (!res.ok) {
       if (
@@ -84,7 +84,7 @@ export const submitNewObject = (values) => dispatch =>
     .then(() => {
       console.log('Submitted with values', values);
       dispatch(postObjectSuccess())
-    })
+    }) 
 // .catch(err => {
 //     const {reason, message, location} = err;
 //     if (reason === 'ValidationError') {

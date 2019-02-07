@@ -16,7 +16,7 @@ export class Menu extends React.Component{
           <li><Link to='menu/categories'>Filter by categories</Link></li>
           <li><Link to='menu/about'>About this project</Link></li>
           <li><Link to='menu/contact'>Contact us</Link></li>
-          <li><Link to='/form'>Add an Item</Link></li>
+          <li><Link to='/App/form'>Add an Item</Link></li>
           <li><Link to='/App/List'>close menu</Link></li>
           {/*  last link will have conditional path for map v list */}
         </ul>

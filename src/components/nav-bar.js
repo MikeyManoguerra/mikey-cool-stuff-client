@@ -8,7 +8,7 @@ export class NavBar extends React.Component {
     return (
       <nav className='nav-list'>
         <Link to='/menu/' className='menu'>Menu</Link>
-        <Link to='/form/' className='form'>Add Object!</Link>
+        <Link to='/App/form/' className='form'>Add Object!</Link>
       </nav>
     )
   }

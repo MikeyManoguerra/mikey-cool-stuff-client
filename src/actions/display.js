@@ -57,11 +57,11 @@ export const getCategories = () => dispatch => {
     });
 };
 
-export const submitNewObject = (values) => dispatch =>
+export const submitNewObject = (values) => dispatch =>{
+debugger;
   fetch(`${API_BASE_URL}/objects`, {
     method: 'POST',
-    body: JSON.stringify(values),
-    headers: {'content-type': 'application/json'}
+    body: values['image'],
   }).then(res => {
     if (!res.ok) {
       if (
@@ -84,7 +84,7 @@ export const submitNewObject = (values) => dispatch =>
     .then(() => {
       console.log('Submitted with values', values);
       dispatch(postObjectSuccess())
-    }) 
+    }) }
 // .catch(err => {
 //     const {reason, message, location} = err;
 //     if (reason === 'ValidationError') {

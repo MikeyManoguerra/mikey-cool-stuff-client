@@ -10,8 +10,8 @@ export class Header extends React.Component {
       <header>
         <NavBar />
         <div className="title">
-          <h1>Object Assign</h1>
-          <h2> Organizations of Matter coming and going</h2>
+          <h1>Source Stuff</h1>
+          <h2>Locate matter on Earth</h2>
         </div>
       </header>
     )

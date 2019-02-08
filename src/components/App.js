@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Header } from './header';
 import List from './list';
-import Form from './new-object-form';
+import Form from './form';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import { Menu } from './menu';

@@ -55,26 +55,31 @@ export default class ImageDrop extends React.Component {
           {({ getRootProps, getInputProps }) => {
             return (
               <div
+             
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
-                {
-                  <p>Try dropping some files here, or click to select files to upload.</p>
+                {<div className='image-drop-bucket'>
+                  <p>Drop an image file here,</p>
+                  <p>or click here to upload</p>
+                  </div>
                 }
               </div>
             )
           }}
         </Dropzone>
         <div>
-          <div className="FileUpload">
+          <div className="image-preview">
             ...
          </div>
 
-          <div>
+          <div className='image-preview'>
             {this.state.uploadedFileCloudinaryUrl === '' ? null :
               <div>
                 <p>{this.state.uploadedFile.name}</p>
-                <img alt='' src={this.state.uploadedFileCloudinaryUrl} />
+                <img className='image-preview'
+                  alt=''
+                  src={this.state.uploadedFileCloudinaryUrl} />
               </div>}
           </div>
         </div>

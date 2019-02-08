@@ -1,9 +1,8 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
-import Input from './form-input';
+import Input from './input';
 import { connect } from 'react-redux';
 import { getCategories, submitNewObject } from '../actions/display';
-import  ImageInput from './image-input';
 import ImageDrop from './image-drop';
 
 
@@ -11,14 +10,12 @@ import ImageDrop from './image-drop';
 export class NewObjectForm extends React.Component {
   componentDidMount() {
     this.props.dispatch(getCategories())
-
   }
 
   onSubmit(values) {
     console.log(values);
     this.props.dispatch(submitNewObject(values))
   }
-
 
   render() {
     let catOptions = this.props.categoriesList.map((cat, index) => (
@@ -35,8 +32,8 @@ export class NewObjectForm extends React.Component {
     }
     return (
 
-      <div className='form-container'>
-        <h3>Submit a new Object to the collection
+      <div className='form-container display'>
+        <h3 className='form-header'>Submit a new Object to the collection
       </h3>
         <form
           onSubmit={this.props.handleSubmit(values =>
@@ -50,6 +47,7 @@ export class NewObjectForm extends React.Component {
             label="Object to post to the website"
           />
           <Field
+          className='form-input-element text-area'
             name='description'
             type='textarea'
             element='textarea'
@@ -84,13 +82,8 @@ export class NewObjectForm extends React.Component {
             component={Input}
             label="add a category of your own!"
           />
-          <Field
-            name='image'
-            type='file'
-            component={ImageInput}
-            />
           <ImageDrop />
-          <button type="submit">Submit</button>
+          <button className='submit-button' type="submit">Submit</button>
         </form>
       </div>
     )

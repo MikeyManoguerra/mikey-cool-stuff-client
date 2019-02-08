@@ -7,7 +7,6 @@ import Form from './new-object-form';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import { Menu } from './menu';
-import { FileUpload } from './image-component';
 
 class App extends Component {
 
@@ -20,7 +19,6 @@ class App extends Component {
           <Route path='/menu/' exact component={Menu} />
           <Route path='/App/List/' exact component={List} />
           <Route path='/App/form/' exact component={Form} />
-          <Route path='/App/form/' exact component={FileUpload} />
       </div>
     );
   }

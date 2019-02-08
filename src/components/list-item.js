@@ -1,5 +1,4 @@
 import React from 'react';
-import './list-item.css';
 import { handleExpandedItem } from '../actions/display';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,19 +9,24 @@ export class ListItem extends React.Component {
   }
 
   render() {
+    console.log(this.props.imageOne);
     return (
-      <div className="list-item">
-        <div className='image-container'>
+      <div className="contracted list-item">
+        <div className='contracted image-container'>
+          <img className='image-preview' src={this.props.imageOne}
+            alt={this.props.name}
+            onClick={(e) => this.expandThisItem(e.target)}
+          />
         </div>
-        <div className='info-container'>
+        <div className='contracted info-container'>
           <h3> {this.props.name}</h3>
           <p>Postal code location: {this.props.postalCode}</p>
           <p>Country of origin: {this.props.countryOfOrigin}</p>
         </div>
-        <div className='button-container'>
+        <div className='contracted button-container'>
           <button
             value={this.props.id}
-            onClick={(e) => this.expandThisItem(e.target )}>
+            onClick={(e) => this.expandThisItem(e.target)}>
             More</button>
         </div>
       </div>

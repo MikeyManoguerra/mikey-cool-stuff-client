@@ -4,6 +4,7 @@ import Input from './form-input';
 import { connect } from 'react-redux';
 import { getCategories, submitNewObject } from '../actions/display';
 import  ImageInput from './image-input';
+import ImageDrop from './image-drop';
 
 
 
@@ -71,7 +72,7 @@ export class NewObjectForm extends React.Component {
             name='categoryIds'
             type='select '
             element='select'
-            multiple='multple'
+            multiple='true'
             component={Input}
             label="select a category"
           >
@@ -88,6 +89,7 @@ export class NewObjectForm extends React.Component {
             type='file'
             component={ImageInput}
             />
+          <ImageDrop />
           <button type="submit">Submit</button>
         </form>
       </div>

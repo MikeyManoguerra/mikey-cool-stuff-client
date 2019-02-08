@@ -101,4 +101,6 @@ export const submitNewObject = (values) => dispatch =>
 //         })
 //     );
 // });
-
+export const imageUploadSuccess = () =>{
+  console.log ('yay')
+}

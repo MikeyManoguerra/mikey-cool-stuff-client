@@ -8,6 +8,7 @@ export default class ImageInput extends React.Component {
 
   onChange(e) { 
     const { input: { onChange } } = this.props
+    console.log(onChange)
     onChange(
       e.target.files[0]);
   }

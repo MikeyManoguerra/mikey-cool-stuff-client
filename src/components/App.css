@@ -11,11 +11,19 @@
   max-width: 1000px;
   margin-left:auto;
   margin-right: auto;
+  margin-bottom: 75px;
 }
 
 button{
   padding: 5px;
   border-width: 1px;
+}
+ul{
+  list-style-type: none;
+}
+
+li{
+margin: 5px;
 }
 
 /* Form styles */
@@ -99,6 +107,11 @@ h3{
   justify-self: stretch;
   align-self: stretch;
  background-color: red;
+}
+
+.full-image{
+max-width: 100%;
+height: auto;
 }
 
 .expanded.name-location-container{

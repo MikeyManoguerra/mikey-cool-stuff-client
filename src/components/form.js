@@ -4,6 +4,7 @@ import Input from './input';
 import { connect } from 'react-redux';
 import { getCategories, submitNewObject } from '../actions/display';
 import ImageDrop from './image-drop';
+import { Link } from 'react-router-dom';
 
 
 
@@ -107,7 +108,7 @@ export class NewObjectForm extends React.Component {
               </div>}
           </div>
         </div>
-
+        <Link to='/App/List'>Go Back</Link>
       </div>
     )
   };

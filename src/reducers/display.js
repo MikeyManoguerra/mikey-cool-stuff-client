@@ -7,7 +7,9 @@ const initialState = {
   loading: false,
   error: null,
   expandedListItem: null,
-  submissionSuccess: false
+  submissionSuccess: false,
+  uploadedFileCloudinaryUrl: '',
+  uploadedFile: ''
 }
 
 export const displayReducer = (state = initialState, action) => {
@@ -38,6 +40,16 @@ export const displayReducer = (state = initialState, action) => {
   if (action.type === actions.POST_OBJECT_SUCCESS) {
     return Object.assign({}, state, {
       submissionSuccess: true
+    })
+  }
+  if (action.type === actions.UPLOADED_IMAGE_FILE) {
+    return Object.assign({}, state, {
+      uploadedFile: action.imageFile
+    })
+  }
+  if (action.type === actions.DEFINE_CLOUDINARY_URL) {
+    return Object.assign({}, state, {
+      uploadedFileCloudinaryUrl: action.url
     })
   }
   return state;

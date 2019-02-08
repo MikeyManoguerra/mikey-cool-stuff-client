@@ -29,6 +29,19 @@ export const ContractAllItems = () => ({
   type: CONTRACT_ALL_ITEMS,
 
 })
+export const UPLOADED_IMAGE_FILE = 'UPLOADED_IMAGE_FILE';
+export const uploadedImageFile = imageFile => {
+  return({
+  type: UPLOADED_IMAGE_FILE,
+  imageFile
+})}
+export const DEFINE_CLOUDINARY_URL = 'DEFINE_CLOUDINARY_URL';
+export const defineCloudinaryUrl = url =>{
+  return ({
+  type: DEFINE_CLOUDINARY_URL,
+  url
+
+})};
 
 
 export const fetchObjects = () => dispatch => {

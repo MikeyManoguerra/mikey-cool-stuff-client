@@ -13,8 +13,16 @@ export class NewObjectForm extends React.Component {
   }
 
   onSubmit(values) {
-    console.log(values);
-    this.props.dispatch(submitNewObject(values))
+
+    if (this.props.imageUrl !== '') {
+      debugger;
+      const valuesWithImage = {
+        ...values,
+        image: this.props.imageUrl
+      }
+      debugger;
+      return this.props.dispatch(submitNewObject(valuesWithImage))
+    } else return this.props.dispatch(submitNewObject(values))
   }
 
   render() {
@@ -47,7 +55,7 @@ export class NewObjectForm extends React.Component {
             label="Object to post to the website"
           />
           <Field
-          className='form-input-element text-area'
+            className='form-input-element text-area'
             name='description'
             type='textarea'
             element='textarea'
@@ -85,6 +93,21 @@ export class NewObjectForm extends React.Component {
           <ImageDrop />
           <button className='submit-button' type="submit">Submit</button>
         </form>
+        <div>
+          <div className="image-preview">
+            ...
+         </div>
+          <div className='image-preview'>
+            {this.props.imageUrl === '' ? null :
+              <div>
+                <p>{this.props.uploadedFile.name}</p>
+                <img className='image-preview'
+                  alt=''
+                  src={this.props.imageUrl} />
+              </div>}
+          </div>
+        </div>
+
       </div>
     )
   };
@@ -93,7 +116,9 @@ export class NewObjectForm extends React.Component {
 
 const mapStateToProps = state => ({
   categoriesList: state.display.categories,
-  submissonSuccess: state.display.submissonSuccess
+  submissonSuccess: state.display.submissonSuccess,
+  imageUrl: state.display.uploadedFileCloudinaryUrl,
+  uploadedFile: state.display.uploadedFile
 })
 
 NewObjectForm = connect(mapStateToProps)(NewObjectForm)

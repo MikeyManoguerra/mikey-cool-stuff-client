@@ -27,7 +27,7 @@ export class ExpandedListItem extends React.Component {
           <p>{this.props.description}</p>
         </div>
         <div className='expanded button-container'>
-          <button onClick={() => this.condenseListItem()}>close</button>
+          <button className='expanded-button'onClick={() => this.condenseListItem()}>close</button>
         </div>
       </div>
     );

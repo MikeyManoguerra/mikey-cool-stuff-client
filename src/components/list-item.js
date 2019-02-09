@@ -13,7 +13,7 @@ export class ListItem extends React.Component {
     return (
       <div className="contracted list-item">
         <div className='contracted image-container'>
-          <img className='image-preview' src={this.props.imageOne}
+          <img className='image-thumbnail' src={this.props.imageOne}
             alt={this.props.name}
             onClick={(e) => this.expandThisItem(e.target)}
           />
@@ -24,7 +24,7 @@ export class ListItem extends React.Component {
           <p>Country of origin: {this.props.countryOfOrigin}</p>
         </div>
         <div className='contracted button-container'>
-          <button
+          <button className='contracted-button'
             value={this.props.id}
             onClick={(e) => this.expandThisItem(e.target)}>
             More</button>

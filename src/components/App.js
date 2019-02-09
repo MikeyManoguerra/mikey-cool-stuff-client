@@ -7,6 +7,9 @@ import Form from './form';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import { Menu } from './menu';
+import { Contact } from './contact-us';
+import { About } from './about';
+import { CategoryFilter } from './category-filter'
 
 class App extends Component {
 
@@ -15,10 +18,14 @@ class App extends Component {
     return (
       <div>
         <Redirect exact from='/' to='/App/List' />
-          <Route path='/App/' component={Header} />
-          <Route path='/menu/' exact component={Menu} />
-          <Route path='/App/List/' exact component={List} />
-          <Route path='/App/form/' exact component={Form} />
+        <Route path='/App/' component={Header} />
+        <Route path='/menu/' exact component={Menu} />
+        <Route path='/menu/categories' exact component={CategoryFilter} />
+        <Route path='/menu/about' exact component={About} />
+        <Route path='/menu/contact' exact component={Contact} />
+        <Route path='/App/List/' exact component={List} />
+        <Route path='/App/form/' exact component={Form} />
+
       </div>
     );
   }

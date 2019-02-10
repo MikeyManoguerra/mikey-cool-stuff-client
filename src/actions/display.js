@@ -48,6 +48,7 @@ export const fetchObjects = () => dispatch => {
   fetch(`${API_BASE_URL}/objects`)
     .then(res => {
       if (!res.ok) {
+        console.log(res.statusText)
         return Promise.reject(res.statusText);
       }
       return res.json();

@@ -10,8 +10,13 @@ import { Menu } from './menu';
 import { Contact } from './contact-us';
 import { About } from './about';
 import { CategoryFilter } from './category-filter'
+import { fetchObjects } from '../actions/display';
+
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchObjects());
+  }
 
   render() {
 

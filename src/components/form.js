@@ -16,12 +16,10 @@ export class NewObjectForm extends React.Component {
   onSubmit(values) {
 
     if (this.props.imageUrl !== '') {
-      debugger;
       const valuesWithImage = {
         ...values,
         image: this.props.imageUrl
       }
-      debugger;
       return this.props.dispatch(submitNewObject(valuesWithImage))
     } else return this.props.dispatch(submitNewObject(values))
   }
@@ -36,7 +34,7 @@ export class NewObjectForm extends React.Component {
       successMessage = (
         <div className="message message-success">
           Message submitted successfully
-							</div>
+				</div>
       );
     }
     return (

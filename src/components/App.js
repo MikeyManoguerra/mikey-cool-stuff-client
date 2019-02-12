@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import { Header } from './header';
+import  Header  from './header';
 import List from './list';
 import Form from './form';
 import { connect } from 'react-redux';
@@ -10,13 +10,22 @@ import { Menu } from './menu';
 import { Contact } from './contact-us';
 import { About } from './about';
 import { CategoryFilter } from './category-filter'
-import { fetchObjects } from '../actions/display';
+import { fetchObjects, contractInfoSection } from '../actions/display';
 
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(fetchObjects());
+    this.startPageLoadTimer()
   }
+
+
+  startPageLoadTimer(){
+   setTimeout(
+     ()=> this.props.dispatch(contractInfoSection()),
+     7*1000
+     )
+   }
 
   render() {
 

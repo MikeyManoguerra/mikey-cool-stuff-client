@@ -7,9 +7,9 @@ const initialState = {
   loading: false,
   error: null,
   expandedListItem: null,
-  submissionSuccess: false,
   uploadedFileCloudinaryUrl: '',
-  uploadedFile: ''
+  uploadedFile: '',
+  infoSection: 'page-load'
 }
 
 export const displayReducer = (state = initialState, action) => {
@@ -38,8 +38,10 @@ export const displayReducer = (state = initialState, action) => {
     })
   }
   if (action.type === actions.POST_OBJECT_SUCCESS) {
-    return Object.assign({}, state, {
-      submissionSuccess: true
+    return ({
+      ...state,
+      objects: [action.newObject, ...state.objects],
+
     })
   }
   if (action.type === actions.UPLOADED_IMAGE_FILE) {
@@ -50,6 +52,16 @@ export const displayReducer = (state = initialState, action) => {
   if (action.type === actions.DEFINE_CLOUDINARY_URL) {
     return Object.assign({}, state, {
       uploadedFileCloudinaryUrl: action.url
+    })
+  }
+  if (action.type === actions.CONTRACT_INFO_SECTION) {
+    return Object.assign({}, state, {
+      infoSection : 'contracted'
+    })
+  }
+  if (action.type === actions.EXPAND_INFO_SECTION) {
+    return Object.assign({}, state, {
+      infoSection: 'more-info'
     })
   }
   return state;

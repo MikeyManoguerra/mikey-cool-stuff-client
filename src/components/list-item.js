@@ -9,7 +9,6 @@ export class ListItem extends React.Component {
   }
 
   render() {
-    console.log(this.props.imageOne);
     return (
       <div className="contracted list-item">
         <div className='contracted image-container'>

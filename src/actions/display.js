@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '../config';
+import { SubmissionError } from 'redux-form';
 
 export const FETCH_OBJECTS_SUCCESS = 'FETCH_OBJECTS_SUCCESS';
 export const fetchObjectsSuccess = objectsList => ({
@@ -11,9 +12,12 @@ export const fetchCategoriesSuccess = categoriesList => ({
   categoriesList
 })
 export const POST_OBJECT_SUCCESS = 'POST_OBJECT_SUCCESS';
-export const postObjectSuccess = () => ({
-  type: POST_OBJECT_SUCCESS,
-})
+export const postObjectSuccess = (newObject) => {
+ return ({
+    type: POST_OBJECT_SUCCESS,
+    newObject
+  })
+}
 
 export const HANDLE_EXPANDED_ITEM = 'HANDLE_EXPANDED_ITEM';
 export const handleExpandedItem = expandedItemId => {
@@ -25,23 +29,36 @@ export const handleExpandedItem = expandedItemId => {
 }
 
 export const CONTRACT_ALL_ITEMS = 'CONTRACT_ALL_ITEMS';
-export const ContractAllItems = () => ({
+export const contractAllItems = () => ({
   type: CONTRACT_ALL_ITEMS,
 
 })
 export const UPLOADED_IMAGE_FILE = 'UPLOADED_IMAGE_FILE';
 export const uploadedImageFile = imageFile => {
-  return({
-  type: UPLOADED_IMAGE_FILE,
-  imageFile
-})}
-export const DEFINE_CLOUDINARY_URL = 'DEFINE_CLOUDINARY_URL';
-export const defineCloudinaryUrl = url =>{
   return ({
-  type: DEFINE_CLOUDINARY_URL,
-  url
+    type: UPLOADED_IMAGE_FILE,
+    imageFile
+  })
+}
+export const DEFINE_CLOUDINARY_URL = 'DEFINE_CLOUDINARY_URL';
+export const defineCloudinaryUrl = url => {
+  return ({
+    type: DEFINE_CLOUDINARY_URL,
+    url
 
-})};
+  })
+};
+
+export const CONTRACT_INFO_SECTION = 'CONTRACT_INFO_SECTION';
+export const contractInfoSection = () => ({
+  type: CONTRACT_INFO_SECTION
+})
+
+export const EXPAND_INFO_SECTION = 'EXPAND_INFO_SECTION';
+export const expandInfoSection = () => ({
+  type: EXPAND_INFO_SECTION
+})
+
 
 
 export const fetchObjects = () => dispatch => {
@@ -75,7 +92,7 @@ export const submitNewObject = (values) => dispatch =>
   fetch(`${API_BASE_URL}/objects`, {
     method: 'POST',
     body: JSON.stringify(values),
-    headers: {'content-type': 'application/json'}
+    headers: { 'content-type': 'application/json' }
   }).then(res => {
     if (!res.ok) {
       if (
@@ -93,28 +110,25 @@ export const submitNewObject = (values) => dispatch =>
         message: res.statusText
       });
     }
-    return;
+    return res.json();
   })
-    .then(() => {
-      console.log('Submitted with values', values);
-      dispatch(postObjectSuccess())
-    }) 
-// .catch(err => {
-//     const {reason, message, location} = err;
-//     if (reason === 'ValidationError') {
-//         // Convert ValidationErrors into SubmissionErrors for Redux Form
-//         return Promise.reject(
-//             new SubmissionError({
-//                 [location]: message
-//             })
-//         );
-//     }
-//     return Promise.reject(
-//         new SubmissionError({
-//             _error: 'Error submitting message'
-//         })
-//     );
-// });
-export const imageUploadSuccess = () =>{
-  console.log ('yay')
-}
+    .then((newObject) => {
+      dispatch(postObjectSuccess(newObject));
+    })
+.catch(err => {
+    const {reason, message, location} = err;
+    if (reason === 'ValidationError') {
+        // Convert ValidationErrors into SubmissionErrors for Redux Form
+        return Promise.reject(
+            new SubmissionError({
+                [location]: message
+            })
+        );
+    }
+    return Promise.reject(
+        new SubmissionError({
+            _error: 'Error submitting message'
+        })
+    );
+});
+

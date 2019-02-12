@@ -19,11 +19,11 @@
 /* changed to fixed height on div, font size changes, not based on padding */
 
 .menu-item:hover{
-  background-color: rgb(182, 128, 62);
+  background-color: rgb(212, 178, 137);
   padding: 5px 30px;
   align-self: stretch;
   color: black;
-  font-size: 21px;
+  font-size: 20px;
   text-decoration: none
 
 }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getCategories, submitNewObject } from '../actions/display';
 import ImageDrop from './image-drop';
 import { Link } from 'react-router-dom';
+import { nonEmpty, required } from '../validator';
 
 
 
@@ -28,12 +29,21 @@ export class NewObjectForm extends React.Component {
     let catOptions = this.props.categoriesList.map((cat, index) => (
       <option key={index} value={cat.id}>{cat.name}</option>
     ))
-    let successMessage;
+    let successMessage ;
+    let errorMessage ;
 
-    if (this.props.submissonSuccess) {
+    if (this.props.submitSucceeded === true) {
       successMessage = (
         <div className="message message-success">
           Message submitted successfully
+				</div>
+      );
+    }
+    if (this.props.submitFailed === true) {
+    
+      successMessage = (
+        <div className="message message-fail">
+        Please give valid entrys!
 				</div>
       );
     }
@@ -42,15 +52,19 @@ export class NewObjectForm extends React.Component {
       <div className='form-container display'>
         <h3 className='form-header'>Submit a new Object to the collection
       </h3>
+
         <form
           onSubmit={this.props.handleSubmit(values =>
             this.onSubmit(values))}>
-          {successMessage}
+          
+      {successMessage}
+      {errorMessage}
 
           <Field
             name='name'
             type='text'
             component={Input}
+            validate={[required, nonEmpty]}
             label="Object to post to the website"
           />
           <Field
@@ -62,6 +76,7 @@ export class NewObjectForm extends React.Component {
             label="A good description of your object"
           />
           <Field
+          validate={[required, nonEmpty]}
             name='postalCode'
             type='text'
             component={Input}
@@ -77,14 +92,14 @@ export class NewObjectForm extends React.Component {
             name='categoryIds'
             type='select '
             element='select'
-            multiple='true'
+            multiple='multiple'
             component={Input}
             label="select a category"
           >
             {catOptions}
           </Field>
           <Field
-            name='categories'
+            name='newCategory'
             type='text'
             component={Input}
             label="add a category of your own!"
@@ -124,7 +139,7 @@ NewObjectForm = connect(mapStateToProps)(NewObjectForm)
 
 export default reduxForm({
   form: 'newObject',
-  destroyOnUnmount: false,
+  // destroyOnUnmount: false,
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('newObject', Object.keys(errors)[0]))
 })(NewObjectForm);

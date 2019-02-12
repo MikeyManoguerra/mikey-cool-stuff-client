@@ -1,14 +1,11 @@
 import * as actions from '../actions/display';
-
+import { POST_OBJECT_SUCCESS } from '../actions/submit'
 
 const initialState = {
   objects: [],
-  categories: [],
   loading: false,
   error: null,
   expandedListItem: null,
-  uploadedFileCloudinaryUrl: '',
-  uploadedFile: '',
   infoSection: 'page-load',
   mapViewItem: null,
   mapUrl: ''
@@ -21,12 +18,10 @@ export const displayReducer = (state = initialState, action) => {
       loading: false
     })
   }
-  if (action.type === actions.FETCH_CATEGORIES_SUCCESS) {
-
-    return Object.assign({}, state, {
-
-      categories: [...action.categoriesList],
-      loading: false
+  if (action.type === POST_OBJECT_SUCCESS) {
+    return ({
+      ...state,
+      objects: [action.newObject, ...state.objects],
     })
   }
   if (action.type === actions.HANDLE_EXPANDED_ITEM) {
@@ -37,23 +32,6 @@ export const displayReducer = (state = initialState, action) => {
   if (action.type === actions.CONTRACT_ALL_ITEMS) {
     return Object.assign({}, state, {
       expandedListItem: null
-    })
-  }
-  if (action.type === actions.POST_OBJECT_SUCCESS) {
-    return ({
-      ...state,
-      objects: [action.newObject, ...state.objects],
-
-    })
-  }
-  if (action.type === actions.UPLOADED_IMAGE_FILE) {
-    return Object.assign({}, state, {
-      uploadedFile: action.imageFile
-    })
-  }
-  if (action.type === actions.DEFINE_CLOUDINARY_URL) {
-    return Object.assign({}, state, {
-      uploadedFileCloudinaryUrl: action.url
     })
   }
   if (action.type === actions.CONTRACT_INFO_SECTION) {

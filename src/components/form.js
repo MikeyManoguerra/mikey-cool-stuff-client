@@ -1,11 +1,22 @@
 import React from 'react';
-import { Field, reduxForm, focus } from 'redux-form';
-import Input from './input';
 import { connect } from 'react-redux';
-import { getCategories, submitNewObject, getCapitalFromCountriesApi  } from '../actions/display';
+import {
+  Field,
+  reduxForm,
+  focus
+} from 'redux-form';
+import Input from './input';
 import ImageDrop from './image-drop';
 import { Link } from 'react-router-dom';
-import { nonEmpty, required } from '../validator';
+import {
+  nonEmpty,
+  required
+} from '../validator';
+import {
+  getCategories,
+  submitNewObject,
+  getCapitalFromCountriesApi
+} from '../actions/submit';
 
 
 
@@ -14,12 +25,11 @@ export class NewObjectForm extends React.Component {
     this.props.dispatch(getCategories())
   }
 
-  getCapital(origin){
+  getCapital(origin) {
     this.props.dispatch(getCapitalFromCountriesApi(origin))
   }
 
   onSubmit(values) {
-    debugger;
     if (this.props.imageUrl !== '') {
       const valuesWithImage = {
         ...values,
@@ -28,14 +38,14 @@ export class NewObjectForm extends React.Component {
       return this.props.dispatch(submitNewObject(valuesWithImage))
     } else return this.props.dispatch(submitNewObject(values))
   }
-  
+
 
   render() {
     let catOptions = this.props.categoriesList.map((cat, index) => (
       <option key={index} value={cat.id}>{cat.name}</option>
     ))
-    let successMessage ;
-    let errorMessage ;
+    let successMessage;
+    let errorMessage;
 
     if (this.props.submitSucceeded === true) {
       successMessage = (
@@ -45,10 +55,10 @@ export class NewObjectForm extends React.Component {
       );
     }
     if (this.props.submitFailed === true) {
-    
+
       successMessage = (
         <div className="message message-fail">
-        Please give valid entrys!
+          Please give valid entrys!
 				</div>
       );
     }
@@ -61,9 +71,9 @@ export class NewObjectForm extends React.Component {
         <form
           onSubmit={this.props.handleSubmit(values =>
             this.onSubmit(values))}>
-          
-      {successMessage}
-      {errorMessage}
+
+          {successMessage}
+          {errorMessage}
 
           <Field
             name='name'
@@ -81,7 +91,7 @@ export class NewObjectForm extends React.Component {
             label="A good description of your object"
           />
           <Field
-          validate={[required, nonEmpty]}
+            validate={[required, nonEmpty]}
             name='postalCode'
             type='text'
             component={Input}
@@ -134,10 +144,10 @@ export class NewObjectForm extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  categoriesList: state.display.categories,
-  submissonSuccess: state.display.submissonSuccess,
-  imageUrl: state.display.uploadedFileCloudinaryUrl,
-  uploadedFile: state.display.uploadedFile
+  categoriesList: state.submit.categories,
+  submissionSuccess: state.display.submissionSuccess,
+  imageUrl: state.submit.uploadedFileCloudinaryUrl,
+  uploadedFile: state.submit.uploadedFile
 })
 
 NewObjectForm = connect(mapStateToProps)(NewObjectForm)

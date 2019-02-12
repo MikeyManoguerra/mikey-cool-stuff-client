@@ -1,16 +1,25 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import {
+  createStore,
+  applyMiddleware,
+  combineReducers,
+  compose
+} from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
-// import navReducer from './reducers/nav'
 import { displayReducer } from './reducers/display'
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { submitReducer } from './reducers/submit';
+const composeEnhancers =
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
+  compose;
 
 const store = createStore(
   combineReducers({
     form: formReducer,
-    display: displayReducer
+    display: displayReducer,
+    submit: submitReducer
   }),
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(
+    applyMiddleware(thunk))
 );
 
 export default store;

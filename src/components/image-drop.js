@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL } from '../config'
 import { connect } from 'react-redux';
-import { uploadedImageFile, defineCloudinaryUrl } from '../actions/display';
+import { uploadedImageFile, defineCloudinaryUrl } from '../actions/submit';
 
 export  class ImageDrop extends React.Component {
 

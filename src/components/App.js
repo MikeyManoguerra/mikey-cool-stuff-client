@@ -47,4 +47,5 @@ const mapStateToProps = state => ({
   objects: state.display.objects
 })
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(
+  connect(mapStateToProps)(App));

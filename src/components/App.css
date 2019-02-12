@@ -98,6 +98,8 @@ h3{
 
 /* expanded list item styles */
 
+
+
 .expanded.list-item{
   display:grid;
   grid-template-columns: auto 40% 40% auto;
@@ -105,6 +107,24 @@ h3{
   grid-gap: 10px;
 }
 
+
+.map-button-container{
+  grid-column: 1 span 1;
+  grid-row: 1 span 1;
+  justify-self: start;
+  align-self: start;
+
+}
+
+div#image-thumbnail-container img#thumbnail-for-map{
+  grid-column-start: 1; 
+  grid-column-end: 2;
+  grid-row: 1 span 1;
+  justify-self: end;
+  align-self: end;
+  max-width: 100px;
+
+}
 .expanded.image-container{
 
   grid-row-start: 1;
@@ -113,7 +133,7 @@ h3{
   grid-column-end:  4;
   justify-self: stretch;
   align-self: stretch;
- background-color: red;
+
 }
 
 .full-image{
@@ -149,16 +169,6 @@ h3{
   align-self:end;
   justify-self: end;
   margin-right:20px;
-}
-
-Ï
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 

@@ -19,7 +19,6 @@ class App extends Component {
     this.startPageLoadTimer()
   }
 
-
   startPageLoadTimer(){
    setTimeout(
      ()=> this.props.dispatch(contractInfoSection()),
@@ -39,7 +38,6 @@ class App extends Component {
         <Route path='/menu/contact' exact component={Contact} />
         <Route path='/App/List/' exact component={List} />
         <Route path='/App/form/' exact component={Form} />
-
       </div>
     );
   }

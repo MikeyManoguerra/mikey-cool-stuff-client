@@ -26,11 +26,11 @@ class List extends React.Component {
   }
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   return ({
     objects: state.display.objects,
     expandedListItem: state.display.expandedListItem
   })
 }
 
-export default withRouter(connect(mapStatetoProps)(List));
+export default withRouter(connect(mapStateToProps)(List));

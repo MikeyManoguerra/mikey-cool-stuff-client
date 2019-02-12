@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL, MAP_QUEST_BASE_URL } from '../config';
 import { SubmissionError } from 'redux-form';
 
 export const FETCH_OBJECTS_SUCCESS = 'FETCH_OBJECTS_SUCCESS';
@@ -13,7 +13,7 @@ export const fetchCategoriesSuccess = categoriesList => ({
 })
 export const POST_OBJECT_SUCCESS = 'POST_OBJECT_SUCCESS';
 export const postObjectSuccess = (newObject) => {
- return ({
+  return ({
     type: POST_OBJECT_SUCCESS,
     newObject
   })
@@ -59,9 +59,16 @@ export const expandInfoSection = () => ({
   type: EXPAND_INFO_SECTION
 })
 
+export const GET_MAP_SUCCESS = 'GET_MAP_SUCCESS'
+export const getMapSuccess = (url, id) => ({
+  type: GET_MAP_SUCCESS,
+  url,
+  id
+})
 
 
 export const fetchObjects = () => dispatch => {
+  debugger;
   fetch(`${API_BASE_URL}/objects`)
     .then(res => {
       if (!res.ok) {
@@ -115,20 +122,46 @@ export const submitNewObject = (values) => dispatch =>
     .then((newObject) => {
       dispatch(postObjectSuccess(newObject));
     })
-.catch(err => {
-    const {reason, message, location} = err;
-    if (reason === 'ValidationError') {
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
         // Convert ValidationErrors into SubmissionErrors for Redux Form
         return Promise.reject(
-            new SubmissionError({
-                [location]: message
-            })
+          new SubmissionError({
+            [location]: message
+          })
         );
-    }
-    return Promise.reject(
+      }
+      return Promise.reject(
         new SubmissionError({
-            _error: 'Error submitting message'
+          _error: 'Error submitting message'
         })
-    );
-});
+      );
+    });
 
+export const getMapFromMapApi = (country, capital, id) => dispatch => {
+
+  return fetch(`${MAP_QUEST_BASE_URL}${capital},${country}&zoom=3&size=800,600&defaultMarker=marker`)
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.url
+    })
+    .then(mapdata => {
+     return  dispatch(getMapSuccess(mapdata , id));
+    })
+}
+
+
+
+export const getCapitalFromCountriesApi = () => dispatch => {
+  fetch(`https://restcountries.eu/rest/v2/name/usa`)
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(([result]) => console.log(result.capital))
+};

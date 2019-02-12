@@ -9,7 +9,9 @@ const initialState = {
   expandedListItem: null,
   uploadedFileCloudinaryUrl: '',
   uploadedFile: '',
-  infoSection: 'page-load'
+  infoSection: 'page-load',
+  mapViewItem: null,
+  mapUrl: ''
 }
 
 export const displayReducer = (state = initialState, action) => {
@@ -56,13 +58,19 @@ export const displayReducer = (state = initialState, action) => {
   }
   if (action.type === actions.CONTRACT_INFO_SECTION) {
     return Object.assign({}, state, {
-      infoSection : 'contracted'
+      infoSection: 'contracted'
     })
   }
   if (action.type === actions.EXPAND_INFO_SECTION) {
     return Object.assign({}, state, {
       infoSection: 'more-info'
     })
+  }
+  if (action.type === actions.GET_MAP_SUCCESS) {
+      return Object.assign({}, state, {
+        mapUrl : action.url,
+        mapViewItem: action.id
+      })
   }
   return state;
 };

@@ -11,8 +11,8 @@ export class Menu extends React.Component {
       <div className='menu display'>
         <h2> Check out this menu</h2>
         <div className='menu-container'>
-          <div className='menu-item'><button>switch data view</button></div>
-          {/* on close menu, uses store data to conditionally render isst vs map page */}
+          {/* <div className='menu-item'><button>switch data view</button></div>
+          on close menu, uses store data to conditionally render isst vs map page */}
           <Link to='/menu/categories'>
             <div className='menu-item'>Filter by categories</div></Link>
           <Link to='/menu/about'>

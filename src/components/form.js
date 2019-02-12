@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from './input';
 import { connect } from 'react-redux';
-import { getCategories, submitNewObject } from '../actions/display';
+import { getCategories, submitNewObject, getCapitalFromCountriesApi  } from '../actions/display';
 import ImageDrop from './image-drop';
 import { Link } from 'react-router-dom';
 import { nonEmpty, required } from '../validator';
@@ -14,8 +14,15 @@ export class NewObjectForm extends React.Component {
     this.props.dispatch(getCategories())
   }
 
-  onSubmit(values) {
+  getCapital(origin){
+    this.props.dispatch(getCapitalFromCountriesApi(origin))
+  }
 
+  onSubmit(values) {
+    debugger;
+     return this.getCapital(values.countryOfOrigin)
+     .then(()=>{
+       debugger;
     if (this.props.imageUrl !== '') {
       const valuesWithImage = {
         ...values,
@@ -23,6 +30,7 @@ export class NewObjectForm extends React.Component {
       }
       return this.props.dispatch(submitNewObject(valuesWithImage))
     } else return this.props.dispatch(submitNewObject(values))
+  });
   }
 
   render() {

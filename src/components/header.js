@@ -7,8 +7,6 @@ import { contractInfoSection, expandInfoSection } from '../actions/display';
 
 export class Header extends React.Component {
 
-
-
   userContractsInfoSection() {
     this.props.dispatch(contractInfoSection())
   }
@@ -16,9 +14,6 @@ export class Header extends React.Component {
   userExpandsInfoSection() {
     this.props.dispatch(expandInfoSection())
   }
-
-
-
 
   render() {
     let infoDisplay = (<button

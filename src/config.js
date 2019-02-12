@@ -6,3 +6,9 @@ export const CLOUDINARY_UPLOAD_URL =
 
 export const CLOUDINARY_UPLOAD_PRESET =
 	'pdkggwg0';
+
+	export const MAP_QUEST_BASE_URL =
+	'https://www.mapquestapi.com/staticmap/v5/map?key=Zv1VRVyg4mhlWC8AmfdyyfhLhZS5EGcO&locations='
+
+
+

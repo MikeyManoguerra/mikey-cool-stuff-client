@@ -20,9 +20,6 @@ export class NewObjectForm extends React.Component {
 
   onSubmit(values) {
     debugger;
-     return this.getCapital(values.countryOfOrigin)
-     .then(()=>{
-       debugger;
     if (this.props.imageUrl !== '') {
       const valuesWithImage = {
         ...values,
@@ -30,8 +27,8 @@ export class NewObjectForm extends React.Component {
       }
       return this.props.dispatch(submitNewObject(valuesWithImage))
     } else return this.props.dispatch(submitNewObject(values))
-  });
   }
+  
 
   render() {
     let catOptions = this.props.categoriesList.map((cat, index) => (

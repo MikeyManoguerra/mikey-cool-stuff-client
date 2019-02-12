@@ -68,7 +68,7 @@ export const getMapSuccess = (url, id) => ({
 
 
 export const fetchObjects = () => dispatch => {
-  debugger;
+
   fetch(`${API_BASE_URL}/objects`)
     .then(res => {
       if (!res.ok) {
@@ -95,30 +95,40 @@ export const getCategories = () => dispatch => {
     });
 };
 
-export const submitNewObject = (values) => dispatch =>
-  fetch(`${API_BASE_URL}/objects`, {
-    method: 'POST',
-    body: JSON.stringify(values),
-    headers: { 'content-type': 'application/json' }
-  }).then(res => {
-    if (!res.ok) {
-      if (
-        res.headers.has('content-type') &&
-        res.headers
-          .get('content-type')
-          .startsWith('application/json')
-      ) {
-        // It's a nice JSON error returned by us, so decode it
-        return res.json().then(err => Promise.reject(err));
+export const submitNewObject = (values) => dispatch => {
+  debugger;
+  return getCapitalFromCountriesApi(values.countryOfOrigin)
+    .then((capital) => {
+      const valuesWithLocation = {
+        ...values,
+        capital: capital
       }
-      // It's a less informative error returned by express
-      return Promise.reject({
-        code: res.status,
-        message: res.statusText
-      });
-    }
-    return res.json();
-  })
+      debugger;
+      return fetch(`${API_BASE_URL}/objects`, {
+        method: 'POST',
+        body: JSON.stringify(valuesWithLocation),
+        headers: { 'content-type': 'application/json' }
+      })
+    })
+    .then(res => {
+      if (!res.ok) {
+        if (
+          res.headers.has('content-type') &&
+          res.headers
+            .get('content-type')
+            .startsWith('application/json')
+        ) {
+          // It's a nice JSON error returned by us, so decode it
+          return res.json().then(err => Promise.reject(err));
+        }
+        // It's a less informative error returned by express
+        return Promise.reject({
+          code: res.status,
+          message: res.statusText
+        });
+      }
+      return res.json();
+    })
     .then((newObject) => {
       dispatch(postObjectSuccess(newObject));
     })
@@ -138,7 +148,7 @@ export const submitNewObject = (values) => dispatch =>
         })
       );
     });
-
+}
 export const getMapFromMapApi = (country, capital, id) => dispatch => {
 
   return fetch(`${MAP_QUEST_BASE_URL}${capital},${country}&zoom=3&size=800,600&defaultMarker=marker`)
@@ -149,19 +159,20 @@ export const getMapFromMapApi = (country, capital, id) => dispatch => {
       return res.url
     })
     .then(mapdata => {
-     return  dispatch(getMapSuccess(mapdata , id));
+      return dispatch(getMapSuccess(mapdata, id));
     })
 }
 
 
 
-export const getCapitalFromCountriesApi = () => dispatch => {
-  fetch(`https://restcountries.eu/rest/v2/name/usa`)
+export const getCapitalFromCountriesApi = (country) =>  {
+  return fetch(`https://restcountries.eu/rest/v2/name/${country}`)
     .then(res => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
       return res.json();
     })
-    .then(([result]) => console.log(result.capital))
+    .then(([result]) => result.capital)
+    .catch(()=> console.log('ahhhhhhhhhhh'))
 };

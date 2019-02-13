@@ -1,5 +1,5 @@
 import React from 'react';
-import { contractAllItems, getMapFromMapApi } from '../actions/display';
+import { contractAllItems, getMapFromMapApi, handleExpandedItem } from '../actions/display';
 import { connect } from 'react-redux';
 
 export class ExpandedListItem extends React.Component {
@@ -14,6 +14,10 @@ export class ExpandedListItem extends React.Component {
       this.props.id))
   }
 
+  showFullPhotoAgain() {
+    this.props.dispatch(handleExpandedItem(this.props.id))
+  }
+
   render() {
     const categoryNames = this.props.categories.map((category, index) => {
       return <li id={category.id} key={index}>{category.name}</li>
@@ -24,12 +28,23 @@ export class ExpandedListItem extends React.Component {
       onClick={() => this.condenseListItem()}
     />)
 
+    let mapButton = ( <button
+      className='expanded-button'
+      onClick={(e) => this.requestMapView(e.target)}>
+      View Origin Map
+</button>)
+
     if (this.props.mapViewItem === this.props.id) {
       fullImage = (<img className='full-image'
         src={this.props.mapUrl}
         alt={`map displaying the capital of the country of origin ${this.props.countryOfOrigin}`}
         onClick={() => this.condenseListItem()}
       />)
+      mapButton = ( <button
+        className='expanded-button'
+        onClick={(e) => this.showFullPhotoAgain(e.target)}>
+    Show Full Photo
+  </button>)
     }
 
     let thumbnailImage;
@@ -40,21 +55,26 @@ export class ExpandedListItem extends React.Component {
         alt={this.props.name}
       />)
     }
-
+    let mapError;
+    if (this.props.mapError === this.props.id) {
+      mapError = (<div className='map-error'>
+        <p>Error: Cannot retrieve location
+         data of the country of origin for this object.
+         It is possible the stated origin is too obscure of a place to
+       locate on a map!</p>
+      </div>)
+    }
 
     return (
       <div className="expanded list-item" id={this.props.id}>
         <div className='map-button-container'>
-          <button
-            className='expanded-button'
-            onClick={(e) => this.requestMapView(e.target)}>
-            switch to map view
-      </button>
+         {mapButton}
         </div>
         <div id='image-thumbnail-container'>
           {thumbnailImage}
         </div>
         <div className='expanded image-container'>
+          {mapError}
           {fullImage}
         </div>
         <div className='expanded name-location-container'>
@@ -77,7 +97,8 @@ export class ExpandedListItem extends React.Component {
 const mapStateToProps = state => {
   return ({
     mapUrl: state.display.mapUrl,
-    mapViewItem: state.display.mapViewItem
+    mapViewItem: state.display.mapViewItem,
+    mapError: state.display.mapError
   })
 }
 

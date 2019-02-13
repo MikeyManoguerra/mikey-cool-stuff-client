@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   Field,
   reduxForm,
-  focus
+  focus,
 } from 'redux-form';
 import Input from './input';
 import ImageDrop from './image-drop';
@@ -29,14 +29,23 @@ export class NewObjectForm extends React.Component {
     this.props.dispatch(getCapitalFromCountriesApi(origin))
   }
 
+  addPhotoAndSubmit(values)
+  { if (this.props.imageUrl !== '') {
+    const valuesWithImage = {
+      ...values,
+      image: this.props.imageUrl
+    }
+    return this.props.dispatch(submitNewObject(valuesWithImage))
+  } else {
+    const valuesWithStockPhoto = {
+      ...values,
+      image: 'https://res.cloudinary.com/dgzjr8afn/image/upload/v1550073398/rb2.jpg'
+    }
+    return this.props.dispatch(submitNewObject(valuesWithStockPhoto))
+  }}
+
   onSubmit(values) {
-    if (this.props.imageUrl !== '') {
-      const valuesWithImage = {
-        ...values,
-        image: this.props.imageUrl
-      }
-      return this.props.dispatch(submitNewObject(valuesWithImage))
-    } else return this.props.dispatch(submitNewObject(values))
+    return this.addPhotoAndSubmit(values)
   }
 
 
@@ -50,7 +59,8 @@ export class NewObjectForm extends React.Component {
     if (this.props.submitSucceeded === true) {
       successMessage = (
         <div className="message message-success">
-          Message submitted successfully
+          <p>You Posted your Object successfully. Hooray!</p>
+          <Link to='/App/List'>Go Back to Collection</Link>
 				</div>
       );
     }
@@ -58,7 +68,7 @@ export class NewObjectForm extends React.Component {
 
       successMessage = (
         <div className="message message-fail">
-          Please give valid entrys!
+          <p>Something Went wrong. Did you Complete the Form?</p>
 				</div>
       );
     }
@@ -67,14 +77,11 @@ export class NewObjectForm extends React.Component {
       <div className='form-container display'>
         <h3 className='form-header'>Submit a new Object to the collection
       </h3>
-
+        {successMessage}
+        {errorMessage}
         <form
           onSubmit={this.props.handleSubmit(values =>
             this.onSubmit(values))}>
-
-          {successMessage}
-          {errorMessage}
-
           <Field
             name='name'
             type='text'
@@ -136,7 +143,7 @@ export class NewObjectForm extends React.Component {
               </div>}
           </div>
         </div>
-        <Link to='/App/List'>Go Back</Link>
+        <Link to='/App/List'>Go Back to Collection</Link>
       </div>
     )
   };

@@ -9,7 +9,7 @@ export class Menu extends React.Component {
   render() {
     return (
       <div className='menu display'>
-        <h2> Check out this menu</h2>
+        <h2> Navigation Menu</h2>
         <div className='menu-container'>
           {/* <div className='menu-item'><button>switch data view</button></div>
           on close menu, uses store data to conditionally render isst vs map page */}

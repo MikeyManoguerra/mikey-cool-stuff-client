@@ -27,7 +27,12 @@ margin: 5px;
 }
 
 /* Form styles */
-
+.message{
+  height: 50px;
+}
+.message p{
+  font-size: 30px;
+}
 .form-header{
 }
 
@@ -114,6 +119,15 @@ h3{
   justify-self: start;
   align-self: start;
 
+}
+
+.map-error{
+  background-color: rgb(213, 240, 240);
+  opacity: 0.9;
+  width: 400px;
+  height:100px;
+  position: absolute;
+  z-index: 100;
 }
 
 div#image-thumbnail-container img#thumbnail-for-map{

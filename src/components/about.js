@@ -6,7 +6,7 @@ export class About extends React.Component {
 
 
   render() {
-
+// TODO add popup text here
     return (
       <div>
         <h3>about this site stub</h3>

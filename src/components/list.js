@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import  ListItem  from './list-item';
+import ListItem from './list-item';
 import ExpandedListItem from './expanded-list-item';
 import { withRouter } from 'react-router-dom';
 
 class List extends React.Component {
-  
+
 
   render() {
     const objectList = this.props.objects.map((obj, index) => {
@@ -15,9 +15,15 @@ class List extends React.Component {
       } else return (
         <li key={index}><ListItem {...obj} /></li>)
     })
+    let errorMessage;
+
+    if (this.props.error) {
+      errorMessage = (<div className='error'>{this.props.error}</div>)
+    }
 
     return (
       <div className='display'>
+        {errorMessage}
         <ul className='object-list'>
           {objectList}
         </ul>
@@ -29,7 +35,8 @@ class List extends React.Component {
 const mapStateToProps = state => {
   return ({
     objects: state.display.objects,
-    expandedListItem: state.display.expandedListItem
+    expandedListItem: state.display.expandedListItem,
+    error: state.display.error
   })
 }
 

@@ -39,13 +39,15 @@ export const getCategories = () => dispatch => {
     })
     .then(categoriesList => {
       dispatch(fetchCategoriesSuccess(categoriesList));
-    });
+    })
+    //TODO : create catch option cannot 
+    // retrieve categories at this time, try submitting your own
+    .catch(()=>(null))
 };
 
 export const submitNewObject = (values) => dispatch => {
   return getCapitalFromCountriesApi(values.countryOfOrigin)
     .then((capital) => {
-      debugger;
       const valuesWithLocation = {
         ...values,
         capital: capital
@@ -71,16 +73,16 @@ export const submitNewObject = (values) => dispatch => {
         return Promise.reject({
           code: res.status,
           message: res.statusText
-        });
+        })
       }
-      debugger;
+
       return res.json();
     })
     .then((newObject) => {
       dispatch(postObjectSuccess(newObject));
     })
     .catch(err => {
-      debugger;
+      // TODO add catch block that returns server side errors
       const { reason, message, location } = err;
       if (reason === 'ValidationError') {
         // Convert ValidationErrors into SubmissionErrors for Redux Form

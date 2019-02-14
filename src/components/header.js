@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from './nav-bar';
-import './header.css';
+import './css/header.css';
 import { contractInfoSection, expandInfoSection } from '../actions/display';
 
 

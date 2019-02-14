@@ -29,7 +29,6 @@ export class ExpandedListItem extends React.Component {
     />)
 
     let mapButton = ( <button
-      className='expanded-button'
       onClick={(e) => this.requestMapView(e.target)}>
       View Origin Map
 </button>)
@@ -41,7 +40,6 @@ export class ExpandedListItem extends React.Component {
         onClick={() => this.condenseListItem()}
       />)
       mapButton = ( <button
-        className='expanded-button'
         onClick={(e) => this.showFullPhotoAgain(e.target)}>
     Show Full Photo
   </button>)
@@ -57,7 +55,7 @@ export class ExpandedListItem extends React.Component {
     }
     let mapError;
     if (this.props.mapError === this.props.id) {
-      mapError = (<div className='map-error'>
+      mapError = (<div className='expanded-map-error'>
         <p>Error: Cannot retrieve location
          data of the country of origin for this object.
          It is possible the stated origin is too obscure of a place to
@@ -66,27 +64,27 @@ export class ExpandedListItem extends React.Component {
     }
 
     return (
-      <div className="expanded list-item" id={this.props.id}>
-        <div className='map-button-container'>
+      <div id="expanded-list-item">
+        <div className='expanded-map-button-container'>
          {mapButton}
         </div>
-        <div id='image-thumbnail-container'>
+        <div className='expanded-image-thumbnail-container'>
           {thumbnailImage}
         </div>
-        <div className='expanded image-container'>
+        <div className='expanded-image-container'>
           {mapError}
           {fullImage}
         </div>
-        <div className='expanded name-location-container'>
+        <div className='expanded-name-location-container'>
           <h3> {this.props.name}</h3>
           <p>Postal code location: {this.props.postalCode}</p>
           <p>Country of origin: {this.props.countryOfOrigin}</p>
         </div>
-        <div className='expanded description-container'>
+        <div className='expanded-description-container'>
           <p>{this.props.description}</p>
           <ul>{categoryNames}</ul>
         </div>
-        <div className='expanded button-container'>
+        <div className='expanded-button-container'>
           <button className='expanded-button' onClick={() => this.condenseListItem()}>close</button>
         </div>
       </div>

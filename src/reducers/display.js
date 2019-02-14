@@ -1,5 +1,5 @@
 import * as displayActions from '../actions/display';
-import* as submitActions from '../actions/submit'
+import * as submitActions from '../actions/submit'
 
 const initialState = {
   objects: [],
@@ -61,7 +61,7 @@ export const displayReducer = (state = initialState, action) => {
       mapError: action.id
     })
   }
-  if (action.type === displayActions.SET_MAP_ERROR_TO_NULL){
+  if (action.type === displayActions.SET_MAP_ERROR_TO_NULL) {
     return Object.assign({}, state, {
       mapError: null
     })
@@ -72,7 +72,7 @@ export const displayReducer = (state = initialState, action) => {
       loading: false
     })
   }
- 
+
   if (action.type === submitActions.UPLOADED_IMAGE_FILE) {
     return Object.assign({}, state, {
       uploadedFile: action.imageFile

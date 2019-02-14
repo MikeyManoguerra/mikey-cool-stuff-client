@@ -23,7 +23,6 @@ export const handleExpandedItem = expandedItemId => {
 export const CONTRACT_ALL_ITEMS = 'CONTRACT_ALL_ITEMS';
 export const contractAllItems = () => ({
   type: CONTRACT_ALL_ITEMS,
-
 })
 
 export const CONTRACT_INFO_SECTION = 'CONTRACT_INFO_SECTION';
@@ -35,6 +34,7 @@ export const EXPAND_INFO_SECTION = 'EXPAND_INFO_SECTION';
 export const expandInfoSection = () => ({
   type: EXPAND_INFO_SECTION
 })
+
 export const GET_MAP_SUCCESS = 'GET_MAP_SUCCESS'
 export const getMapSuccess = (url, id) => ({
   type: GET_MAP_SUCCESS,

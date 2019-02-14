@@ -21,9 +21,11 @@ button{
 ul{
   list-style-type: none;
 }
-
 li{
 margin: 5px;
+}
+img{
+  border-radius: 3px;
 }
 
 /* Form styles */
@@ -65,7 +67,7 @@ margin: 5px;
 
 .contracted.list-item {
   display:grid;
-  grid-template-columns: 20% 60% auto;
+  grid-template-columns: auto 60% auto;
   grid-template-rows: auto;
   grid-gap:0px;
 }
@@ -132,16 +134,19 @@ div#expanded-list-item div.expanded-image-container div.expanded-map-error{
 }
 
 div#expanded-list-item div.expanded-image-thumbnail-container{
-  grid-column-start: 1; 
-  grid-column-end: 2;
-  grid-row-end: 2 ;
-  grid-row-end: 3;
-  justify-self: end;
+  grid-column-start: 2; 
+  grid-column-end: 3;
+  grid-row-start: 1 ;
+  grid-row-end: 2;
+  justify-self: start;
   align-self: end;
+  margin:25px 6px;
   max-width: 100px;
 }
 div.expanded-image-thumbnail-container #thumbnail-for-map{
   max-width: 100px;
+  opacity: 0.6;
+  
 }
 div#expanded-list-item div.expanded-image-container{
 
@@ -186,7 +191,6 @@ div#expanded-list-item div.expanded-button-container {
   grid-column-end:  4;
   align-self:end;
   justify-self: end;
-  margin-right:20px;
 }
 
 

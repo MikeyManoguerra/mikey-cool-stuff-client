@@ -151,10 +151,10 @@ export class NewObjectForm extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  categoriesList: state.submit.categories,
+  categoriesList: state.display.categories,
   submissionSuccess: state.display.submissionSuccess,
-  imageUrl: state.submit.uploadedFileCloudinaryUrl,
-  uploadedFile: state.submit.uploadedFile
+  imageUrl: state.display.uploadedFileCloudinaryUrl,
+  uploadedFile: state.display.uploadedFile
 })
 
 NewObjectForm = connect(mapStateToProps)(NewObjectForm)

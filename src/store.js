@@ -7,7 +7,6 @@ import {
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import { displayReducer } from './reducers/display'
-import { submitReducer } from './reducers/submit';
 import { POST_OBJECT_SUCCESS } from './actions/submit';
 const composeEnhancers =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
@@ -25,8 +24,7 @@ const store = createStore(
         }
       }
     }),
-    display: displayReducer,
-    submit: submitReducer
+    display: displayReducer
   }),
   composeEnhancers(
     applyMiddleware(thunk))

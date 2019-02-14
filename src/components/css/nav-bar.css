@@ -1,7 +1,6 @@
 .nav-list{
-  display: flex;
-  flex-direction:  row;
-  justify-content: space-between;
+  display: grid;
+ grid-template-columns: auto auto 60%;
   width: 100%;
   position: fixed;
   text-decoration: none;
@@ -9,8 +8,12 @@
   padding: 15px;
 }
 .menu{
-justify-self: left
+  grid-column-start: 1;
+  grid-column-end: 2;
+justify-self: start;
 }
 .form{
-justify-self: right
+  grid-column-start: 2;
+  grid-column-end: 3;
+justify-self: start;
 }

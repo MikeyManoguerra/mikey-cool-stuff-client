@@ -79,14 +79,14 @@ img{
 .contracted.image-container{
   grid-column-start: 1;
   grid-column-end: 2;
- background-color: antiquewhite;
  justify-self: center;
- align-self: stretch;
+ align-self: center;
 }
 
 .contracted.info-container{
   grid-column-start: 2;
   grid-column-end:  3;
+  min-height: 100px;
 }
 
 h3{
@@ -97,9 +97,9 @@ h3{
   grid-column-start: 3;
   grid-column-end:  4;
   grid-row: 1 span 1;
-  align-self: end;
-  justify-self: end;
-  margin-right:20px;
+  align-self: center;
+  justify-self: start;
+
   
 }
 
@@ -121,16 +121,19 @@ div#expanded-list-item div.expanded-map-button-container{
   grid-row-end:3;
   justify-self: start;
   align-self: start;
-
+  margin: 5px 0px
 }
 
 div#expanded-list-item div.expanded-image-container div.expanded-map-error{
   background-color: rgb(213, 240, 240);
   opacity: 0.9;
-  width: 400px;
+  width: 300px;
   height:100px;
   position: absolute;
   z-index: 100;
+  margin: 10px;
+  padding: 2px 10px;
+  border-radius: 3px;
 }
 
 div#expanded-list-item div.expanded-image-thumbnail-container{
@@ -170,7 +173,7 @@ div#expanded-list-item div.expanded-name-location-container{
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
- 
+ min-height: 150px;
   
 }
 div#expanded-list-item div.expanded-description-container{
@@ -189,8 +192,9 @@ div#expanded-list-item div.expanded-button-container {
   grid-row-end: 3;
   grid-column-start: 3;
   grid-column-end:  4;
-  align-self:end;
+  align-self:start;
   justify-self: end;
+  margin: 5px 0px;
 }
 
 

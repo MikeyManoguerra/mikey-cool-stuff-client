@@ -76,7 +76,7 @@ export class ExpandedListItem extends React.Component {
           {fullImage}
         </div>
         <div className='expanded-name-location-container'>
-          <h3> {this.props.name}</h3>
+          <h3>{this.props.name}</h3>
           <p>Postal code location: {this.props.postalCode}</p>
           <p>Country of origin: {this.props.countryOfOrigin}</p>
         </div>

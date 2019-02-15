@@ -14,5 +14,18 @@ the top level express functions in index.js
 
 server/routes contains the different routes endpoints, and there is a folder db-utils which holds individual table insertion helper functions that can be dynamically called as needed.
 
+on page load
+https://res.cloudinary.com/dgzjr8afn/image/upload/v1550267424/ids0xgzitbwrg4p7wiyd.png
+main page:
+https://res.cloudinary.com/dgzjr8afn/image/upload/v1550267531/ldm1rk2amaomdo2lbxp7.png
+expanded item:
+https://res.cloudinary.com/dgzjr8afn/image/upload/v1550267434/qsl3fnsvujugss0udoxs.png
+map view:
+https://res.cloudinary.com/dgzjr8afn/image/upload/v1550267443/e2jvjmpxdq37jr11ho8u.png
+form:
+https://res.cloudinary.com/dgzjr8afn/image/upload/v1550267453/tvnlfubxn9tz7xhw8vwn.png
+
+
+
 This project was bootstrapped with [Create React App]
 

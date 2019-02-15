@@ -40,14 +40,14 @@ export class Header extends React.Component {
     }
 
     return (
-      <header>
+      <div >
         <NavBar />
-        <div className="title">
+        <header role='banner' className="title">
           <h1>Matter Source</h1>
           <h2 className='sub-header'>Locate stuff on Earth</h2>
           {infoDisplay}
-        </div>
-      </header>
+        </header>
+      </div>
     )
   }
 }

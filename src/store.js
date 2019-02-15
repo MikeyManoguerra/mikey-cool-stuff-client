@@ -15,10 +15,10 @@ const composeEnhancers =
 const store = createStore(
   combineReducers({
     form: formReducer.plugin({
-     newObject : (state, action) => { 
-        switch(action.type) {
+      newObject: (state, action) => {
+        switch (action.type) {
           case POST_OBJECT_SUCCESS:
-            return undefined;       
+            return undefined;
           default:
             return state;
         }

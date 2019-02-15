@@ -25,10 +25,11 @@ export class ExpandedListItem extends React.Component {
     let fullImage = (<img className='full-image'
       src={this.props.imageOne}
       alt={this.props.name}
-      onClick={() => this.condenseListItem()}
+      onDoubleClick={() => this.condenseListItem()}
+    // onClick={(e) => this.requestMapView(e.target)}
     />)
 
-    let mapButton = ( <button
+    let mapButton = (<button
       onClick={(e) => this.requestMapView(e.target)}>
       View Origin Map
 </button>)
@@ -37,11 +38,12 @@ export class ExpandedListItem extends React.Component {
       fullImage = (<img className='full-image'
         src={this.props.mapUrl}
         alt={`map displaying the capital of the country of origin ${this.props.countryOfOrigin}`}
-        onClick={() => this.condenseListItem()}
+        // onDoubleClick={() => this.condenseListItem()}
+        onDoubleClick={(e) => this.showFullPhotoAgain(e.target)}
       />)
-      mapButton = ( <button
+      mapButton = (<button
         onClick={(e) => this.showFullPhotoAgain(e.target)}>
-    Show Full Photo
+        Show Full Photo
   </button>)
     }
 
@@ -66,7 +68,7 @@ export class ExpandedListItem extends React.Component {
     return (
       <div id="expanded-list-item">
         <div className='expanded-map-button-container'>
-         {mapButton}
+          {mapButton}
         </div>
         <div className='expanded-image-thumbnail-container'>
           {thumbnailImage}
@@ -83,7 +85,7 @@ export class ExpandedListItem extends React.Component {
           <p>{this.props.countryOfOrigin}</p>
         </div>
         <div className='expanded-description-container'>
-        <h4>Description</h4>
+          <h4>Description</h4>
           <p>{this.props.description}</p>
           <h4>Characteristics</h4>
           <ul>{categoryNames}</ul>

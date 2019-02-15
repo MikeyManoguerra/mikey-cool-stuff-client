@@ -18,37 +18,31 @@ import {
   getCapitalFromCountriesApi
 } from '../actions/submit';
 
-
-
-export class NewObjectForm extends React.Component {
+class NewObjectForm extends React.Component {
   componentDidMount() {
     this.props.dispatch(getCategories())
   }
-
   getCapital(origin) {
     this.props.dispatch(getCapitalFromCountriesApi(origin))
   }
-
-  addPhotoAndSubmit(values)
-  { if (this.props.imageUrl !== '') {
-    const valuesWithImage = {
-      ...values,
-      image: this.props.imageUrl
+  addPhotoAndSubmit(values) {
+    if (this.props.imageUrl !== '') {
+      const valuesWithImage = {
+        ...values,
+        image: this.props.imageUrl
+      }
+      return this.props.dispatch(submitNewObject(valuesWithImage))
+    } else {
+      const valuesWithStockPhoto = {
+        ...values,
+        image: 'https://res.cloudinary.com/dgzjr8afn/image/upload/v1550073398/rb2.jpg'
+      }
+      return this.props.dispatch(submitNewObject(valuesWithStockPhoto))
     }
-    return this.props.dispatch(submitNewObject(valuesWithImage))
-  } else {
-    const valuesWithStockPhoto = {
-      ...values,
-      image: 'https://res.cloudinary.com/dgzjr8afn/image/upload/v1550073398/rb2.jpg'
-    }
-    return this.props.dispatch(submitNewObject(valuesWithStockPhoto))
-  }}
-
+  }
   onSubmit(values) {
     return this.addPhotoAndSubmit(values)
   }
-
-
   render() {
     let catOptions = this.props.categoriesList.map((cat, index) => (
       <option key={index} value={cat.id}>{cat.name}</option>
@@ -61,7 +55,7 @@ export class NewObjectForm extends React.Component {
         <div className="message message-success">
           <p>You Posted your Object successfully. Hooray!</p>
           <Link to='/App/List'>Go Back to Collection</Link>
-				</div>
+        </div>
       );
     }
     if (this.props.submitFailed === true) {
@@ -69,7 +63,7 @@ export class NewObjectForm extends React.Component {
       successMessage = (
         <div className="message message-fail">
           <p>Something Went wrong. Did you Complete the Form?</p>
-				</div>
+        </div>
       );
     }
     return (
@@ -80,6 +74,7 @@ export class NewObjectForm extends React.Component {
         {successMessage}
         {errorMessage}
         <form
+          aria-label='Submit a new item to the collection'
           onSubmit={this.props.handleSubmit(values =>
             this.onSubmit(values))}>
           <Field
@@ -112,11 +107,10 @@ export class NewObjectForm extends React.Component {
           />
           <Field
             name='categoryIds'
-            type='select '
+            type='select'
             element='select'
-            multiple='multiple'
             component={Input}
-            label="select a category"
+            label="Select a category"
           >
             {catOptions}
           </Field>
@@ -124,7 +118,7 @@ export class NewObjectForm extends React.Component {
             name='newCategory'
             type='text'
             component={Input}
-            label="add a category of your own!"
+            label="Add an additional category of your own!"
           />
           <ImageDrop />
           <button className='submit-button' type="submit">Submit</button>
@@ -157,11 +151,10 @@ const mapStateToProps = state => ({
   uploadedFile: state.display.uploadedFile
 })
 
-NewObjectForm = connect(mapStateToProps)(NewObjectForm)
 
-export default reduxForm({
+export default connect(mapStateToProps)(reduxForm({
   form: 'newObject',
   // destroyOnUnmount: false,
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('newObject', Object.keys(errors)[0]))
-})(NewObjectForm);
+})(NewObjectForm));

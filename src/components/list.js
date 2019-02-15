@@ -22,7 +22,7 @@ class List extends React.Component {
     }
 
     return (
-      <div className='display'>
+      <div role='main' className='display'>
         {errorMessage}
         <ul className='object-list'>
           {objectList}

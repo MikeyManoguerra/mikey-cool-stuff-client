@@ -5,7 +5,7 @@ import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL } from '../config'
 import { connect } from 'react-redux';
 import { uploadedImageFile, defineCloudinaryUrl } from '../actions/submit';
 
-export  class ImageDrop extends React.Component {
+export class ImageDrop extends React.Component {
 
   onImageDrop(files) {
     this.props.dispatch(uploadedImageFile(files[0]));

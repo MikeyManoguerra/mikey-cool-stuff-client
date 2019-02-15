@@ -47,6 +47,7 @@ img{
   width: 300px;
   height: 75px;
   background-color: bisque;
+  padding:20px;
 }
 
 .form-input{

@@ -42,7 +42,7 @@ export const getCategories = () => dispatch => {
     })
     //TODO : create catch option cannot 
     // retrieve categories at this time, try submitting your own
-    .catch(()=>(null))
+    .catch(() => (null))
 };
 
 export const submitNewObject = (values) => dispatch => {

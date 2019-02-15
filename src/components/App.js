@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import './css/App.css';
-import  Header  from './header';
+import Header from './header';
 import List from './list';
 import Form from './form';
 import { connect } from 'react-redux';
@@ -19,12 +19,12 @@ class App extends Component {
     this.startPageLoadTimer()
   }
 
-  startPageLoadTimer(){
-   setTimeout(
-     ()=> this.props.dispatch(contractInfoSection()),
-     7*1000
-     )
-   }
+  startPageLoadTimer() {
+    setTimeout(
+      () => this.props.dispatch(contractInfoSection()),
+      7 * 1000
+    )
+  }
 
   render() {
 
@@ -32,12 +32,13 @@ class App extends Component {
       <div>
         <Redirect exact from='/' to='/App/List' />
         <Route path='/App/' component={Header} />
+        <Route exact path='/App/List/' component={List} />
+        <Route exact path='/App/form/' component={Form} />
         <Route path='/menu/' exact component={Menu} />
         <Route path='/menu/categories' exact component={CategoryFilter} />
         <Route path='/menu/about' exact component={About} />
         <Route path='/menu/contact' exact component={Contact} />
-        <Route path='/App/List/' exact component={List} />
-        <Route path='/App/form/' exact component={Form} />
+
       </div>
     );
   }

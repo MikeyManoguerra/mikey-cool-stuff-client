@@ -110,6 +110,7 @@ class NewObjectForm extends React.Component {
             type='select'
             element='select'
             component={Input}
+            multiple='multiple'
             label="Select a category"
           >
             {catOptions}

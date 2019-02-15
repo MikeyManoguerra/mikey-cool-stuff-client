@@ -8,10 +8,11 @@ export class CategoryFilter extends React.Component {
   render() {
 
     return (
-      <div>
-        <h3>CategoryFilter stub stub</h3>
+      <div className='sub-menu'>
+        <h3>CategoryFilter feature coming soon!</h3>
 
-        <Link to='/menu/'>go back</Link>
+        <Link to='/menu/'><div className='go-back'>Go back</div></Link>
+
       </div>
     )
   }

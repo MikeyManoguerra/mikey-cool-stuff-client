@@ -24,8 +24,8 @@ describe('<ExpandedListItem /> component', () => {
     const wrapper = shallow(<ExpandedListItem {...singleObjectData} />)
     
     expect(wrapper.contains(
-      <p>Postal code location: 12345</p>)).toEqual(true);
+      <p>12345</p>)).toEqual(true);
     expect(wrapper.contains(<h3>thing</h3>)).toEqual(true);
-    expect(wrapper.contains(<p>Country of origin: USA</p>)).toEqual(true);
+    expect(wrapper.contains(<p>USA</p>)).toEqual(true);
   })
 })

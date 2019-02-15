@@ -23,16 +23,16 @@ export class Header extends React.Component {
       this.props.infoSection === 'more-info') {
       infoDisplay = (
         <div className='info-section'>
-        <div id='text'>
-          <button onClick={() => this.userContractsInfoSection()}>
-            hide the app info</button>
+          <div id='text'>
+            <button onClick={() => this.userContractsInfoSection()}>
+              hide the app info</button>
             <h3>Welcome!</h3>
-          <p>On this site you can post a photo and describe an object, along with your location 
-            and where on the globe your object was made.
+            <p>On this site you can post a photo and describe an object, along with your location
+              and where on the globe your object was made.
           </p>
-           <p>This is a place to share and document the materials
-          of your life, and to view and revere the menagerie of matter 
-            humans have collected and created for our modern world.
+            <p>This is a place to share and document the materials
+           of your life, and to view and revere the menagerie of matter
+             humans have collected and created for our modern world.
           </p>
           </div>
         </div>
@@ -43,8 +43,8 @@ export class Header extends React.Component {
       <header>
         <NavBar />
         <div className="title">
-          <h1>Source Stuff</h1>
-          <h2 className='sub-header'>Locate matter on Earth</h2>
+          <h1>Matter Source</h1>
+          <h2 className='sub-header'>Locate stuff on Earth</h2>
           {infoDisplay}
         </div>
       </header>

@@ -16,18 +16,21 @@ export class ListItem extends React.Component {
           <img className='image-thumbnail' src={this.props.imageOne}
             alt={this.props.name}
             onClick={(e) => this.expandThisItem(e.target)}
-            />
+          />
         </div>
         <div className='contracted info-container'>
           <h3>{this.props.name}</h3>
-          <p>Postal code location: {this.props.postalCode}</p>
-          <p>Country of origin: {this.props.countryOfOrigin}</p>
+          <h4>Postal code location</h4>
+          <p>{this.props.postalCode}</p>
+          <h4>Country of Origin</h4>
+          <p>{this.props.countryOfOrigin}</p>
         </div>
         <div className='contracted button-container'>
           <button className='contracted-button'
             value={this.props.id}
             onClick={(e) => {
-              this.expandThisItem(e.target)}}>
+              this.expandThisItem(e.target)
+            }}>
             More</button>
         </div>
       </div>

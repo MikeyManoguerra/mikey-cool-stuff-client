@@ -35,19 +35,51 @@ describe('displayReducer', () => {
       mapError: null
     })
   })
-  it('should contract all items', ()=>{
-
-    const state = displayReducer(undefined, displayActions.contractAllItems())
+  it('should contract all items', () => {
+    const testState = {
+      ...initialState,
+      expandedListItem: 534
+    }
+    const state = displayReducer(testState, displayActions.contractAllItems())
     expect(state).toEqual({
       ...initialState,
       expandedListItem: null
     })
   })
-  it('should contract the info section', ()=>{
+  it('should contract the info section', () => {
     const state = displayReducer(undefined, displayActions.contractInfoSection())
     expect(state).toEqual({
       ...initialState,
       infoSection: 'contracted'
-    })   
+    })
+  })
+  it('should expand the info section', () => {
+    const testState = {
+      ...initialState,
+      infoSection: 'contracted'
+    }
+    const state = displayReducer(testState, displayActions.expandInfoSection())
+    expect(state).toEqual({
+      ...initialState,
+      infoSection: 'more-info'
+    })
+  })
+  it('should set the mapError to null', () => {
+    const testState = {
+      ...initialState,
+      mapError: 645
+    }
+    const state = displayReducer(testState, displayActions.setMapErrorToNull())
+    expect(state).toEqual({
+      ...initialState,
+      mapError: null
+    })
+  })
+  it('should set the cloudinary URL', () => {
+    const state = displayReducer(initialState, submitActions.defineCloudinaryUrl('https://example.org'))
+    expect(state).toEqual({
+      ...initialState,
+      uploadedFileCloudinaryUrl: 'https://example.org'
+    })
   })
 })

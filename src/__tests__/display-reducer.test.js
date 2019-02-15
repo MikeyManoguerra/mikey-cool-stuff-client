@@ -35,4 +35,19 @@ describe('displayReducer', () => {
       mapError: null
     })
   })
+  it('should contract all items', ()=>{
+
+    const state = displayReducer(undefined, displayActions.contractAllItems())
+    expect(state).toEqual({
+      ...initialState,
+      expandedListItem: null
+    })
+  })
+  it('should contract the info section', ()=>{
+    const state = displayReducer(undefined, displayActions.contractInfoSection())
+    expect(state).toEqual({
+      ...initialState,
+      infoSection: 'contracted'
+    })   
+  })
 })

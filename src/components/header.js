@@ -44,7 +44,7 @@ export class Header extends React.Component {
         <NavBar />
         <div className="title">
           <h1>Source Stuff</h1>
-          <h2>Locate matter on Earth</h2>
+          <h2 className='sub-header'>Locate matter on Earth</h2>
           {infoDisplay}
         </div>
       </header>

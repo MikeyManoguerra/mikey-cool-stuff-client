@@ -76,7 +76,6 @@ export const getMapFromMapApi = (country, capital, id) => dispatch => {
     `${MAP_QUEST_BASE_URL}${capital},${country}&zoom=4&size=800,600&defaultMarker=flag-009900-${country}-sm`)
     .then(res => {
       if (!res.ok) {
-        console.log(res)
         return Promise.reject(res.statusText);
       }
       return res.url

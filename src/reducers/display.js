@@ -6,7 +6,7 @@ const initialState = {
   loading: false,
   error: null,
   expandedListItem: null,
-  infoSection: 'page-load',
+  infoSection: false,
   mapViewItem: null,
   mapUrl: '',
   mapError: null,
@@ -42,12 +42,12 @@ export const displayReducer = (state = initialState, action) => {
   }
   if (action.type === displayActions.CONTRACT_INFO_SECTION) {
     return Object.assign({}, state, {
-      infoSection: 'contracted'
+      infoSection: false
     })
   }
   if (action.type === displayActions.EXPAND_INFO_SECTION) {
     return Object.assign({}, state, {
-      infoSection: 'more-info'
+      infoSection: true
     })
   }
   if (action.type === displayActions.GET_MAP_SUCCESS) {

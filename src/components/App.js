@@ -6,21 +6,20 @@ import List from './list';
 import Form from './form';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
-import { fetchObjects, contractInfoSection } from '../actions/display';
+import { fetchObjects, } from '../actions/display';
 
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(fetchObjects());
-    this.startPageLoadTimer()
   }
 
-  startPageLoadTimer() {
-    setTimeout(
-      () => this.props.dispatch(contractInfoSection()),
-      7 * 1000
-    )
-  }
+  // startPageLoadTimer() {
+  //   setTimeout(
+  //     () => this.props.dispatch(contractInfoSection()),
+  //     7 * 1000
+  //   )
+  // }
 
   render() {
 

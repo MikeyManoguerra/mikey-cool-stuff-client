@@ -7,8 +7,8 @@ export class NavBar extends React.Component {
   render() {
     return (
       <nav role='navigation' className='nav-list'>
-        <Link to='/menu/' className='menu'>Menu</Link>
-        <Link to='/App/form/' className='form'>Add An Object!</Link>
+        <Link to='/App/List/'><div className='nav-item'>See the Collection</div></Link>
+        <Link to='/App/Form/'><div className='nav-item'>Add An Object</div></Link>
       </nav>
     )
   }

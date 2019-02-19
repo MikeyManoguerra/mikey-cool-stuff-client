@@ -6,10 +6,6 @@ import List from './list';
 import Form from './form';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
-import { Menu } from './menu';
-import { Contact } from './contact-us';
-import { About } from './about';
-import { CategoryFilter } from './category-filter'
 import { fetchObjects, contractInfoSection } from '../actions/display';
 
 
@@ -34,11 +30,7 @@ class App extends Component {
         <Route path='/App/' component={Header} />
         <Route exact path='/App/List/' component={List} />
         <Route exact path='/App/form/' component={Form} />
-        <Route path='/menu/' exact component={Menu} />
-        <Route path='/menu/categories' exact component={CategoryFilter} />
-        <Route path='/menu/about' exact component={About} />
-        <Route path='/menu/contact' exact component={Contact} />
-
+       
       </div>
     );
   }

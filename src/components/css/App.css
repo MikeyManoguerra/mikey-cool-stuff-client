@@ -15,8 +15,10 @@
 }
 
 button{
-  padding: 5px;
+  padding: 6px 12px;
   border-width: 1px;
+  background-color:white;
+  border-image: none;
 }
 ul{
   list-style-type: none;
@@ -64,12 +66,12 @@ img{
   height: 100px;
 }
 
-@media (min-width:675px){
+@media (min-width:705px){
   .object-list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 }
    
@@ -87,7 +89,8 @@ img{
   grid-template-columns: auto 60% auto;
   grid-template-rows: auto;
   grid-gap:0px;
-  min-width: 320px;
+  min-width: 334px;
+  margin:auto;
 }
 .contracted.image-container .image-thumbnail{
   max-width: 100px;
@@ -118,6 +121,7 @@ h3{
   grid-row: 1 span 1;
   align-self: center;
   justify-self: start;
+ 
 
   
 }

@@ -54,8 +54,8 @@ class NewObjectForm extends React.Component {
       successMessage = (
         <div className="message message-success">
           <p>You Posted your Object successfully. Hooray!</p>
-          <Link to='/App/List'>Go Back to Collection</Link>
-        </div>
+          <Link to='/App/List/'><div className='form-nav nav-item'>Go Back to the Collection</div></Link>    
+          </div>    
       );
     }
     if (this.props.submitFailed === true) {
@@ -63,8 +63,7 @@ class NewObjectForm extends React.Component {
       successMessage = (
         <div className="message message-fail">
           <p>Something Went wrong. Did you Complete the Form?</p>
-        </div>
-      );
+        </div>);
     }
     return (
 
@@ -138,7 +137,7 @@ class NewObjectForm extends React.Component {
               </div>}
           </div>
         </div>
-        <Link to='/App/List'>Go Back to Collection</Link>
+        <Link to='/App/List/'><div className='form-nav nav-item'>Go Back to the Collection</div></Link>       
       </div>
     )
   };

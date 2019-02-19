@@ -1,19 +1,33 @@
+
+
 .nav-list{
-  display: grid;
- grid-template-columns: auto auto 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   width: 100%;
   position: fixed;
-  text-decoration: none;
   background-color: rgb(213, 240, 240);
-  padding: 15px;
+  opacity: 0.9;
 }
-.menu{
-  grid-column-start: 1;
-  grid-column-end: 2;
-justify-self: start;
+
+.nav-item{
+  /* margin: 0px 20px; */
+  padding: 15px 15px;
+  color:black;
 }
-.form{
-  grid-column-start: 2;
-  grid-column-end: 3;
-justify-self: start;
+.form-nav{
+  background-color :rgb(213, 240, 240);
+  width: 220px;
+}
+
+/* .form-nav.nav-item:hover{
+transition: background-color 1s;
+background-color :rgb(213, 240, 240);
+} */
+.nav-item:hover{
+  transition: background-color 1s;
+  background-color: white;
+}
+a{
+  text-decoration: none;
 }

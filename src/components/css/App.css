@@ -64,11 +64,12 @@ img{
   height: 100px;
 }
 
-@media (min-width:750px){
+@media (min-width:675px){
   .object-list{
-    display: grid;
-    grid-template-columns: auto auto;
-   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 }
    
@@ -86,6 +87,7 @@ img{
   grid-template-columns: auto 60% auto;
   grid-template-rows: auto;
   grid-gap:0px;
+  min-width: 320px;
 }
 .contracted.image-container .image-thumbnail{
   max-width: 100px;

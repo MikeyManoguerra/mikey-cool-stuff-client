@@ -7,7 +7,7 @@ const initialState = {
   loading: false,
   error: null,
   expandedListItem: null,
-  infoSection: 'page-load',
+  infoSection: false,
   mapViewItem: null,
   mapUrl: '',
   mapError: null,
@@ -50,18 +50,18 @@ describe('displayReducer', () => {
     const state = displayReducer(undefined, displayActions.contractInfoSection())
     expect(state).toEqual({
       ...initialState,
-      infoSection: 'contracted'
+      infoSection: false
     })
   })
   it('should expand the info section', () => {
     const testState = {
       ...initialState,
-      infoSection: 'contracted'
+      infoSection: false
     }
     const state = displayReducer(testState, displayActions.expandInfoSection())
     expect(state).toEqual({
       ...initialState,
-      infoSection: 'more-info'
+      infoSection: true
     })
   })
   it('should set the mapError to null', () => {

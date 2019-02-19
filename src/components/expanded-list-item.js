@@ -66,7 +66,7 @@ export class ExpandedListItem extends React.Component {
     }
 
     return (
-      <div id="expanded-list-item">
+      <div id="expanded-list-item" className='expanded'>
         <div className='expanded-map-button-container'>
           {mapButton}
         </div>

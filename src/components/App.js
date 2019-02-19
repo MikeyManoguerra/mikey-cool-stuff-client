@@ -4,6 +4,7 @@ import './css/App.css';
 import Header from './header';
 import List from './list';
 import Form from './form';
+import ExpandedItem from './expanded-list-item';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import { Menu } from './menu';
@@ -33,6 +34,7 @@ class App extends Component {
         <Redirect exact from='/' to='/App/List' />
         <Route path='/App/' component={Header} />
         <Route exact path='/App/List/' component={List} />
+        <Route exact path='/App/List/:id' component={ExpandedItem}/>
         <Route exact path='/App/form/' component={Form} />
         <Route path='/menu/' exact component={Menu} />
         <Route path='/menu/categories' exact component={CategoryFilter} />

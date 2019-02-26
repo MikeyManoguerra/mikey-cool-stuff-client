@@ -22,7 +22,7 @@ export class Header extends React.Component {
           <p>On this site you can post a photo and describe an object, along with your location
               and where on the globe your object was made.
           </p>
-            <p>This is a place to share and document the materials
+            <p>Here is a place to share and document the materials
            of your life, and to view and revere the menagerie of matter
              humans have collected and created for our modern world.
           </p>

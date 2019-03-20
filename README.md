@@ -3,21 +3,21 @@
  A place to share your quirkiest stuff with other stuff enthusiasts. 
 
 
-##A live version of this app can be found at
+## A live version of this app can be found at
 https://matter-source-client.herokuapp.com
 
-##server side app
+## server side app
 https://github.com/MikeyManoguerra/mikey-cool-stuff-server
 
 
 Matter-Source is an online collection of real world objects. Users can post an image and description of interesting things they encounter, and post that along with information about where it is located and where it was made. The app provides a feed of the objects,a s well a feature to display the object's origin on the a map.
 
-##Stack
+## Stack
 
 #### Front End:
 React, Redux, Dropzone, Redux-Form, Redux-Router, Enzyme, Cloudinary
 
-####Back End
+#### Back End
 Node, Express, Morgan, Knex, PostgresQl, Mocha, Chai, Chai-http, Nyc
 
 On the front end, The main page can be found in src/components/list.js, which is is dynamically generated on parameters in list-item.js and expanded-list-item.js

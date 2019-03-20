@@ -18,14 +18,13 @@ Matter-Source is an online collection of real world objects. Users can post an i
 React, Redux, Dropzone, Redux-Form, Redux-Router, Enzyme, Cloudinary
 
 #### Back End
-Node, Express, Morgan, Knex, PostgresQl, Mocha, Chai, Chai-http, Nyc
+Node, Express, Morgan, Knex, PostgresQL, Mocha, Chai, Chai-http, Nyc
 
 On the front end, The main page can be found in src/components/list.js, which is is dynamically generated on parameters in list-item.js and expanded-list-item.js
 
 The new submission form is located in src/components/form.js, and inputs are generated in the input.js and image-drop.js files.
 
-The back end has a folder called server, which contains  
-the top level express functions in index.js
+The back end has a folder called server, which contains the top level express functions in index.js
 
 server/routes contains the different routes endpoints, and there is a folder db-utils which holds individual table insertion helper functions that can be dynamically called as needed.
 
